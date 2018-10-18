@@ -1,0 +1,33 @@
+defaultName: Swagger-sample
+logging:
+  level: ERROR
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+
+    
+server:
+  applicationConnectors:
+  - type: http 
+    port: 9000
+  - type: https
+    port: 9002
+    keyStorePath: dwstart.keystore
+    keyStorePassword: "crimson"
+    validateCerts: false
+    validatePeers: false    
+  adminConnectors:
+  - type: http
+    port: 9001    
+
+database:
+  driverClass: org.postgresql.Driver
+  user: postgresondocker
+  password: postgresondocker
+  url: jdbc:postgresql://localhost:5432/swaggersample
+
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect

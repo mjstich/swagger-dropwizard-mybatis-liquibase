@@ -1,0 +1,5 @@
+
+database:
+    user: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/appointmentsds?ApplicationName=appointments-service
