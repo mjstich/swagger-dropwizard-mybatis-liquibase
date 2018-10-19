@@ -5,6 +5,7 @@ import io.dropwizard.Configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.sample.Shopify.ShopifyConfig;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import io.dropwizard.db.DataSourceFactory;
 
 public class SwaggerSampleConfiguration extends Configuration {
+
     @NotEmpty
     @JsonProperty
     private String defaultName = "swagger-sample";
@@ -32,5 +34,17 @@ public class SwaggerSampleConfiguration extends Configuration {
 
     public void setDatabase(DataSourceFactory database) {
         this.database = database;
+    }
+
+    @NotNull
+    @JsonProperty("shopify")
+    private ShopifyConfig shopify = new ShopifyConfig();
+
+    public void setShopify(ShopifyConfig shopifyConfig) {
+        this.shopify = shopifyConfig;
+    }
+
+    public ShopifyConfig getShopify() {
+        return this.shopify;
     }
 }

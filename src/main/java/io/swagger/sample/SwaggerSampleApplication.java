@@ -8,6 +8,7 @@ import io.swagger.config.*;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import io.swagger.sample.resource.ProductResource;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
@@ -34,13 +35,12 @@ public class SwaggerSampleApplication extends Application <SwaggerSampleConfigur
       // Setup serving of resources for the application
 
       // Setup Data Migrations for Liquibase
-      bootstrap.addBundle(new MJSBundle());
-      //bootstrap.addBundle(new MigrationsBundle<SwaggerSampleConfiguration>() {
-      //    @Override
-      //    public DataSourceFactory getDataSourceFactory(SwaggerSampleConfiguration configuration) {
-      //        return configuration.getDataSourceFactory();
-      //    }
-      //});
+      bootstrap.addBundle(new MigrationsBundle<SwaggerSampleConfiguration>() {
+          @Override
+          public DataSourceFactory getDataSourceFactory(SwaggerSampleConfiguration configuration) {
+              return configuration.getDataSourceFactory();
+          }
+      });
   }
 
   public DataSourceFactory getDataSourceFactory(SwaggerSampleConfiguration configuration) {
@@ -81,12 +81,7 @@ public class SwaggerSampleApplication extends Application <SwaggerSampleConfigur
 
       environment.jersey().register(injector.getInstance(ApiListingResource.class));
       environment.jersey().register(injector.getInstance(PetResource.class));
-  }
+      environment.jersey().register(injector.getInstance(ProductResource.class));
 
-    class MJSBundle extends MigrationsBundle<SwaggerSampleConfiguration> {
-        @Override
-        public DataSourceFactory getDataSourceFactory(SwaggerSampleConfiguration configuration) {
-            return configuration.getDataSourceFactory();
-        }
-    }
+  }
 }

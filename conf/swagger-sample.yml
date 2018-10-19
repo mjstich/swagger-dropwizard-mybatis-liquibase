@@ -31,3 +31,9 @@ database:
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+shopify:
+  accessToken: 7a532e0413043d597e1f70f02480962d
+  domain: donkeynuggets.myshopify.com
+  id: 21a97d716ddfffa1cce95f6774bf6af0
+  token: 21a97d716ddfffa1cce95f6774bf6af0

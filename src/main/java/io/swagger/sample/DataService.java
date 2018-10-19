@@ -43,7 +43,7 @@ public class DataService {
         MJSBatisModule mbm = new MJSBatisModule(getModelClasses(), getMapperClasses());
         return Guice.createInjector(
                 new ServiceModule(configuration, environment),
-                mbm);
+                buildMyBatisModule());
     }
 
     private static MyBatisModule buildMyBatisModule() {
