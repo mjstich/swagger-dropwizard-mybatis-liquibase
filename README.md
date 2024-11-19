@@ -1,4 +1,4 @@
-To run the sample:
+To run the  sample:
 
 ```
 mvn package
